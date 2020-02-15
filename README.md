@@ -1,5 +1,7 @@
 # SimpleMicroserviceRunner
 
+![Build](https://github.com/nullfound/SimpleMicroserviceRunner/workflows/Build/badge.svg?branch=master)
+
 The goal of *SimpleMicroserviceRunner* is to provide developers with a easy and flexible way spin up a microservice with all the support already built in. 
 
 A service generally requires a lot of support with regards to DI, resiliency, logging. The idea behind this is to provide a ready framework so that developers can focus their effort on the service itself rather than spending time on creating the groundwork for a service.
