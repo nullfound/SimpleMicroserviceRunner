@@ -1,0 +1,14 @@
+<Project>  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.8.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.1" PrivateAssets="all" />
+    <PackageReference Include="AsyncUsageAnalyzers" Version="1.0.0-alpha003" PrivateAssets="all" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta006" PrivateAssets="All" />
+  </ItemGroup>
+ <PropertyGroup>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\AnalyzerRules.Shared.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+ <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)\stylecop.shared.json" />
+  </ItemGroup>
+</Project>

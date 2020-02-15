@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Rules for StyleCop.Analyzers" Description="Code analysis rules for StyleCop.Analyzers.csproj." ToolsVersion="14.0">
+  <Rules AnalyzerId="AsyncUsageAnalyzers" RuleNamespace="AsyncUsageAnalyzers">
+
+  </Rules>
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
+
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+	<Rule Id="SA1633" Action="None" /> <!-- File header missing. Dont need file headers for this project. -->
+    <Rule Id="CS1591" Action="None" /> <!-- Missing XML comment for publicly visible type or member 'Type_or_Member'. Promise will add comment for publicly visible classes. -->    
+	<Rule Id="SA1600" Action="None" /> <!-- elements should be documented. Promise to document them. -->
+	<Rule Id="SA1200" Action="None" /> <!-- using directive should appear within namespace - really, who does this? -->
+  </Rules>
+</RuleSet>

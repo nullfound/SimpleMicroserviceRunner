@@ -1,0 +1,21 @@
+<Project>  
+  <PropertyGroup>
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>$(MSBuildThisFileDirectory)\bin\build\$(MSBuildProjectName)</OutputPath>
+    <PublishDir>$(MSBuildThisFileDirectory)\bin\publish\$(MSBuildProjectName)</PublishDir>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile> 
+    <IsPackable>false</IsPackable>
+    <FodyGenerateXsd>false</FodyGenerateXsd>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)\SharedAssemblyAttributes.cs" Condition="Exists('$(MSBuildThisFileDirectory)\SharedAssemblyAttributes.cs')">
+      <Link>Properties\SharedAssemblyAttributes.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)\CodeAnalyzers.Build.props" Condition="Exists('$(MSBuildThisFileDirectory)\CodeAnalyzers.Build.props')"/>
+  <Import Project="$(MSBuildThisFileDirectory)\Test.Build.props" Condition="Exists('$(MSBuildThisFileDirectory)\Test.Build.props')"/>
+  <Import Project="$(MSBuildThisFileDirectory)\Generated.Build.props" Condition="Exists('$(MSBuildThisFileDirectory)\Generated.Build.props')"/>
+  <Import Project="$(MSBuildThisFileDirectory)\Custom.Build.props" Condition="Exists('$(MSBuildThisFileDirectory)\Custom.Build.props')"/>
+</Project>

@@ -1,0 +1,11 @@
+branches:
+    release:
+        mode: ContinuousDeployment
+    feature:
+        mode: ContinuousDeployment
+    hotfix:
+        mode: ContinuousDeployment
+    develop:
+        mode: ContinuousDeployment
+    pull-request:
+        mode: ContinuousDeployment

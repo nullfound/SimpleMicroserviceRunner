@@ -1,0 +1,5 @@
+<Project>
+    <ItemGroup> 
+        <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.1.0" /> 
+    </ItemGroup>
+</Project>

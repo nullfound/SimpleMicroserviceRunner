@@ -1,0 +1,31 @@
+<Project>  
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(MSBuildProjectFile), '.*\.Tests\.'))">
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)\SharedAssemblyAttributes.Tests.cs" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(MSBuildProjectFile), '.*\.Tests\.')) AND Exists('$(MSBuildThisFileDirectory)\SharedAssemblyAttributes.Tests.cs')">
+      <Link>Properties\SharedAssemblyAttributes.Tests.cs</Link>
+    </Compile>   
+  </ItemGroup>
+
+  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(MSBuildProjectFile), 'SimpleMicroserviceRunner\..*\.Tests\.'))">
+	<PackageReference Include="TeamCity.VSTest.TestAdapter" Version="1.0.15" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+    <PackageReference Include="coverlet.msbuild" Version="2.3.0" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.4.0-beta.1.build3958" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReportGenerator" Version="4.2.11" />
+  </ItemGroup>
+  <Target Name="Coverage" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(MSBuildProjectFile), 'SimpleMicroserviceRunner\..*\.Tests\.'))">
+    <ItemGroup>
+      <CoverageFiles Include="$(MSBuildThisFileDirectory)*\opencover.xml" />
+    </ItemGroup>
+    <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="$(MSBuildThisFileDirectory).report" ReportTypes="Html" VerbosityLevel="Verbose" />
+    <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="$(MSBuildThisFileDirectory).report" ReportTypes="TextSummary" VerbosityLevel="Verbose" />
+  </Target>
+</Project>
