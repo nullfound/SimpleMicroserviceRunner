@@ -24,41 +24,20 @@ namespace SimpleMicroserviceRunner.Runtime.Host
 
             try
             {
-                this.UpdateStatus(HostStatusEnum.HostInitialising);
-
                 this.Initialise(token);
 
-                this.UpdateStatus(HostStatusEnum.HostInitialised);
+                this.StartMicroservice();
 
-                this.UpdateStatus(HostStatusEnum.MicroserviceStarting);
-
-                this.microserviceRunTask = Task.Factory.StartNew(
-                    () =>
-                    {
-                        this.UpdateStatus(HostStatusEnum.MicroserviceStarted);
-                        this.config.Microservice.RunAsync(this.cancellationTokenSource.Token).Wait();
-                    },
-                    CancellationToken.None,
-                    TaskCreationOptions.LongRunning,
-                    TaskScheduler.Current);
-                await this.microserviceRunTask.ConfigureAwait(false);
-
-#pragma warning disable CS4014
-                Task.Factory.StartNew(
-                       () => this.WaitForCancellationAndShutdownAsync().Wait(),
-                       CancellationToken.None,
-                       TaskCreationOptions.LongRunning,
-                       TaskScheduler.Current);
-#pragma warning restore CS4014
-            }
-            catch (OperationCanceledException)
-            {
-                this.UpdateStatus(HostStatusEnum.HostShutdown);
+                await this.WaitForMicroserviceToStopAsync().ConfigureAwait(false);
             }
             catch (Exception)
             {
                 this.UpdateStatus(HostStatusEnum.Error);
                 throw;
+            }
+            finally
+            {
+                this.Shutdown();
             }
         }
 
@@ -76,6 +55,8 @@ namespace SimpleMicroserviceRunner.Runtime.Host
 
         internal virtual void Initialise(CancellationToken token)
         {
+            this.UpdateStatus(HostStatusEnum.HostInitialising);
+
             Console.CancelKeyPress += new ConsoleCancelEventHandler((sender, args) =>
             {
                 args.Cancel = true;
@@ -86,25 +67,37 @@ namespace SimpleMicroserviceRunner.Runtime.Host
             this.cancellationTokenSource.Token.ThrowIfCancellationRequested();
 
             Console.WriteLine("Press ctrl-c to stop.");
+
+            this.UpdateStatus(HostStatusEnum.HostInitialised);
         }
 
-        internal virtual async Task WaitForCancellationAndShutdownAsync()
+        internal virtual void StartMicroservice()
         {
-            try
-            {
-                await Task.WhenAll(this.microserviceRunTask).ConfigureAwait(false);
-                this.UpdateStatus(HostStatusEnum.MicroserviceStopped);
-            }
-            catch (Exception)
-            {
-                // log error
-                this.UpdateStatus(HostStatusEnum.Error);
-            }
-            finally
-            {
-                this.UpdateStatus(HostStatusEnum.HostShutdown);
-                this.cancellationTokenSource.Cancel();
-            }
+            this.UpdateStatus(HostStatusEnum.MicroserviceStarting);
+
+            this.microserviceRunTask = Task.Factory.StartNew(
+                () =>
+                {
+                    this.UpdateStatus(HostStatusEnum.MicroserviceStarted);
+                    this.config.Microservice.RunAsync(this.cancellationTokenSource.Token).Wait();
+                },
+                CancellationToken.None,
+                TaskCreationOptions.LongRunning,
+                TaskScheduler.Current);
+        }
+
+        internal virtual async Task WaitForMicroserviceToStopAsync()
+        {
+            // if the microservice is a blocking call then the host will wait here until the cancellation is manually triggered.
+            await Task.WhenAll(this.microserviceRunTask).ConfigureAwait(false);
+            this.UpdateStatus(HostStatusEnum.MicroserviceStopped);
+        }
+
+        internal virtual void Shutdown()
+        {
+            // if there are any errors in the host. we want to be able to send a cancellation to the microservice
+            this.UpdateStatus(HostStatusEnum.HostShutdown);
+            this.cancellationTokenSource.Cancel();
         }
 
         private void Dispose(bool disposing)
