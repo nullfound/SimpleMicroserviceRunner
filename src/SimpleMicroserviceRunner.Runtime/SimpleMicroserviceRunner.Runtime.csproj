@@ -3,5 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleMicroserviceRunner.Utils\SimpleMicroserviceRunner.Utils.csproj" />
+  </ItemGroup>
 </Project>

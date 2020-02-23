@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using SimpleMicroserviceRunner.Runtime.Host;
+using SimpleMicroserviceRunner.Runtime.Plugin;
 
 namespace SimpleMicroserviceRunner.Runtime.Config
 {
@@ -13,6 +14,19 @@ namespace SimpleMicroserviceRunner.Runtime.Config
             return setup;
         }
 
+        public static MicroserviceConfig WithPlugin<T>(this MicroserviceConfig setup)
+            where T : IPlugin, new()
+        {
+            setup.Plugins.Add(new T());
+            return setup;
+        }
+
+        public static MicroserviceConfig WithPlugin(this MicroserviceConfig setup, Func<IPlugin> pluginFactory)
+        {
+            setup.Plugins.Add(pluginFactory());
+            return setup;
+        }
+
         public static void Run(this MicroserviceConfig config, CancellationToken? token = null)
         {
             if (config.Runner == null)
@@ -22,9 +36,6 @@ namespace SimpleMicroserviceRunner.Runtime.Config
 
             try
             {
-                // A System.ServiceProcess.ServiceBase runner might require more things to be initialised.
-                config.Runner.OnStart();
-
                 using (var host = new MicroserviceHost(config))
                 {
                     config.Runner.Run(host, token);

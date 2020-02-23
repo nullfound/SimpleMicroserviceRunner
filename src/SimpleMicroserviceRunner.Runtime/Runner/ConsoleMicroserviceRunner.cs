@@ -7,11 +7,6 @@ namespace SimpleMicroserviceRunner.Runtime.Runner
 {
     public class ConsoleMicroserviceRunner : IMicroserviceRunner
     {
-        public void OnStart()
-        {
-            // Initialize logging?
-        }
-
         public void Run(IMicroserviceHost host, CancellationToken? token = null)
         {
             Task.Factory.StartNew(

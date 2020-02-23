@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using SimpleMicroserviceRunner.Runtime.Config;
+using SimpleMicroserviceRunner.Runtime.Plugin;
 
 namespace SimpleMicroserviceRunner.Runtime.Host
 {
@@ -9,11 +11,13 @@ namespace SimpleMicroserviceRunner.Runtime.Host
     {
         private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private readonly MicroserviceConfig config;
+        private readonly IPluginRunner pluginRunner;
         private Task microserviceRunTask;
 
         public MicroserviceHost(MicroserviceConfig config)
         {
             this.config = config;
+            this.pluginRunner = this.config.PluginRunnerFactory.Invoke();
         }
 
         private HostStatusEnum Status { get; set; }
@@ -26,9 +30,15 @@ namespace SimpleMicroserviceRunner.Runtime.Host
             {
                 this.Initialise(token);
 
+                await this.pluginRunner.RunPluginsAsync(PluginState.OnHostInitialisation, this.cancellationTokenSource.Token).ConfigureAwait(false);
+
+                await this.pluginRunner.RunPluginsAsync(PluginState.BeforeMicroserviceStart, this.cancellationTokenSource.Token).ConfigureAwait(false);
+
                 this.StartMicroservice();
 
                 await this.WaitForMicroserviceToStopAsync().ConfigureAwait(false);
+
+                await this.pluginRunner.RunPluginsAsync(PluginState.AfterMicroserviceShutdown, this.cancellationTokenSource.Token).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -37,7 +47,11 @@ namespace SimpleMicroserviceRunner.Runtime.Host
             }
             finally
             {
+                await this.pluginRunner.RunPluginsAsync(PluginState.BeforeHostShutdown, this.cancellationTokenSource.Token).ConfigureAwait(false);
+
                 this.Shutdown();
+
+                await this.pluginRunner.RunPluginsAsync(PluginState.TidyUp, this.cancellationTokenSource.Token).ConfigureAwait(false);
             }
         }
 

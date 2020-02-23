@@ -10,6 +10,7 @@ namespace SimpleMicroserviceRunner.Sample.Basic
         {
             MicroserviceBuilder.WithMicroservice<HelloWorldMicroservice>()
                 .WithRunner<ConsoleMicroserviceRunner>()
+                .WithPlugin<SomePlugin>()
                 .Run();
         }
     }
