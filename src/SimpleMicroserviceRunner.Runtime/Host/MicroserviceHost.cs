@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using SimpleMicroserviceRunner.Plugin;
 using SimpleMicroserviceRunner.Runtime.Config;
 using SimpleMicroserviceRunner.Runtime.Plugin;
 

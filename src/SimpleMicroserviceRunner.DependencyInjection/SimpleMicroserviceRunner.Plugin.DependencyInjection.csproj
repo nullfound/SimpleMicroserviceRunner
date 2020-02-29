@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="SimpleInjector" Version="4.9.0" />
     <ProjectReference Include="..\SimpleMicroserviceRunner.Plugin\SimpleMicroserviceRunner.Plugin.csproj" />
     <ProjectReference Include="..\SimpleMicroserviceRunner.Utils\SimpleMicroserviceRunner.Utils.csproj" />
   </ItemGroup>

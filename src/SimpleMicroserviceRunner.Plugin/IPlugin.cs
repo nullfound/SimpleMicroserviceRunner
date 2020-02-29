@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace SimpleMicroserviceRunner.Runtime.Plugin
+namespace SimpleMicroserviceRunner.Plugin
 {
     public interface IPlugin
     {

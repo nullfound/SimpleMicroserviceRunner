@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SimpleMicroserviceRunner.DependencyInjection\SimpleMicroserviceRunner.Plugin.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\SimpleMicroserviceRunner.Runtime\SimpleMicroserviceRunner.Runtime.csproj" />
+  </ItemGroup>
+
+</Project>

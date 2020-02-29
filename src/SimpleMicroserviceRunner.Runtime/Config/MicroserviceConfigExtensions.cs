@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using SimpleMicroserviceRunner.Plugin;
 using SimpleMicroserviceRunner.Runtime.Host;
 using SimpleMicroserviceRunner.Runtime.Plugin;
 
@@ -21,9 +22,9 @@ namespace SimpleMicroserviceRunner.Runtime.Config
             return setup;
         }
 
-        public static MicroserviceConfig WithPlugin(this MicroserviceConfig setup, Func<IPlugin> pluginFactory)
+        public static MicroserviceConfig WithPlugin(this MicroserviceConfig setup, Func<IPlugin> instanceCreator)
         {
-            setup.Plugins.Add(pluginFactory());
+            setup.Plugins.Add(instanceCreator());
             return setup;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SimpleMicroserviceRunner.Plugin;
 using SimpleMicroserviceRunner.Runtime.Plugin;
 
 namespace SimpleMicroserviceRunner.Runtime.Config

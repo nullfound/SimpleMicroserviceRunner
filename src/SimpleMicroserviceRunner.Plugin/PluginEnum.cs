@@ -1,4 +1,4 @@
-﻿namespace SimpleMicroserviceRunner.Runtime.Plugin
+﻿namespace SimpleMicroserviceRunner.Plugin
 {
     public enum PluginState
     {

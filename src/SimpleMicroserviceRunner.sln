@@ -7,13 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Ru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Utils", "SimpleMicroserviceRunner.Utils\SimpleMicroserviceRunner.Utils.csproj", "{5C88335E-BFBE-4517-8059-37F87B80E9FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.DependencyInjection", "SimpleMicroserviceRunner.DependencyInjection\SimpleMicroserviceRunner.DependencyInjection.csproj", "{969AC96D-E880-43FE-BE03-A885D9BC334F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Plugin.DependencyInjection", "SimpleMicroserviceRunner.DependencyInjection\SimpleMicroserviceRunner.Plugin.DependencyInjection.csproj", "{969AC96D-E880-43FE-BE03-A885D9BC334F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Logging", "SimpleMicroserviceRunner.Logging\SimpleMicroserviceRunner.Logging.csproj", "{A471E318-0366-431B-85CE-73D0EBD2056B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Plugin.Logging", "SimpleMicroserviceRunner.Logging\SimpleMicroserviceRunner.Plugin.Logging.csproj", "{A471E318-0366-431B-85CE-73D0EBD2056B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D639F6E2-1198-4D62-8032-48D0C79DAFDC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Sample.Basic", "Samples\SimpleMicroserviceRunner.Sample.Basic\SimpleMicroserviceRunner.Sample.Basic.csproj", "{F73685F0-28F1-4A2A-932A-0DE9F3093B00}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Plugin", "SimpleMicroserviceRunner.Plugin\SimpleMicroserviceRunner.Plugin.csproj", "{E87A9BAF-0AE4-480C-A026-78B935F7603F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Sample.BasicWithDI", "Samples\SimpleMicroserviceRunner.Sample.BasicWithDI\SimpleMicroserviceRunner.Sample.BasicWithDI.csproj", "{79DC6FA3-EF6B-46FB-A810-FCB3265862E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +45,21 @@ Global
 		{F73685F0-28F1-4A2A-932A-0DE9F3093B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F73685F0-28F1-4A2A-932A-0DE9F3093B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F73685F0-28F1-4A2A-932A-0DE9F3093B00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E87A9BAF-0AE4-480C-A026-78B935F7603F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E87A9BAF-0AE4-480C-A026-78B935F7603F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E87A9BAF-0AE4-480C-A026-78B935F7603F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E87A9BAF-0AE4-480C-A026-78B935F7603F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79DC6FA3-EF6B-46FB-A810-FCB3265862E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79DC6FA3-EF6B-46FB-A810-FCB3265862E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79DC6FA3-EF6B-46FB-A810-FCB3265862E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79DC6FA3-EF6B-46FB-A810-FCB3265862E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F73685F0-28F1-4A2A-932A-0DE9F3093B00} = {D639F6E2-1198-4D62-8032-48D0C79DAFDC}
+		{79DC6FA3-EF6B-46FB-A810-FCB3265862E7} = {D639F6E2-1198-4D62-8032-48D0C79DAFDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6CF22D5E-0839-4FBD-84F6-CFF60A3C927E}

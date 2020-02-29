@@ -1,4 +1,4 @@
-﻿namespace SimpleMicroserviceRunner.Logging
+﻿namespace SimpleMicroserviceRunner.Plugin.Logging
 {
     public class Class1
     {
