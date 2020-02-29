@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SimpleMicroserviceRunner.DependencyInjection\SimpleMicroserviceRunner.Plugin.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\SimpleMicroserviceRunner.Plugin.DependencyInjection\SimpleMicroserviceRunner.Plugin.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\SimpleMicroserviceRunner.Runtime\SimpleMicroserviceRunner.Runtime.csproj" />
   </ItemGroup>
 

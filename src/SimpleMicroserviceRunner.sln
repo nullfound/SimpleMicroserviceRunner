@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Ru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Utils", "SimpleMicroserviceRunner.Utils\SimpleMicroserviceRunner.Utils.csproj", "{5C88335E-BFBE-4517-8059-37F87B80E9FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Plugin.DependencyInjection", "SimpleMicroserviceRunner.DependencyInjection\SimpleMicroserviceRunner.Plugin.DependencyInjection.csproj", "{969AC96D-E880-43FE-BE03-A885D9BC334F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Plugin.DependencyInjection", "SimpleMicroserviceRunner.Plugin.DependencyInjection\SimpleMicroserviceRunner.Plugin.DependencyInjection.csproj", "{969AC96D-E880-43FE-BE03-A885D9BC334F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Plugin.Logging", "SimpleMicroserviceRunner.Logging\SimpleMicroserviceRunner.Plugin.Logging.csproj", "{A471E318-0366-431B-85CE-73D0EBD2056B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMicroserviceRunner.Plugin.Logging", "SimpleMicroserviceRunner.Plugin.Logging\SimpleMicroserviceRunner.Plugin.Logging.csproj", "{A471E318-0366-431B-85CE-73D0EBD2056B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D639F6E2-1198-4D62-8032-48D0C79DAFDC}"
 EndProject
